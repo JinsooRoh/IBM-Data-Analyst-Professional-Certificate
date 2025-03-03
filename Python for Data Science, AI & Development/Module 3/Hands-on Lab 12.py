@@ -5,9 +5,10 @@
 
 1/0
 # ZeroDivisionError occurs when you try to divide by zero.
-
+"""
 y = a + 5
 # NameError -- in this case, it means that you tried to use the variable a when it was not defined.
+"""
 
 a = [1, 2, 3]
 a[10]
@@ -175,4 +176,3 @@ try:
     print(complex_calculation(num))
 except ValueError:
     print("Invalid input! Please enter a valid integer.")
-
