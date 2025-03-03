@@ -313,3 +313,81 @@ print("Deep Purple's rating is: ",getBandRating("Deep Purple"))
 print("My favourite band is:",myFavouriteBand)
 
 # 12. Collections and Functions
+# When the number of arguments are unknown for a function, They can all be packed into a tuple as shown:
+def printAll(*args): # All the arguments are 'packed' into args which can be treated like a tuple
+    print("No of arguments:", len(args)) 
+    for argument in args:
+        print(argument)
+#printAll with 3 arguments
+printAll('Horsefeather','Adonis','Bone')
+#printAll with 4 arguments
+printAll('Sidecar','Long Island','Mudslide','Carriage')
+
+# The arguments can also be packed into a dictionary as shown:
+def printDictionary(**args):
+    for key in args:
+        print(key + " : " + args[key])
+
+printDictionary(Country='Canada',Province='Ontario',City='Toronto')
+
+# They can accept (and return) data types, objects and even other functions as arguements.
+# Consider the example below:
+def addItems(list):
+    list.append("Three")
+    list.append("Four")
+
+myList = ["One","Two"]
+
+addItems(myList)
+
+myList
+
+# Quiz on Funcion
+# Come up with a function that divides the first input by the second input:
+def division(x, y):
+    return (x/y)
+
+# Use the function con for the following question.
+def con(x, y):
+    return(x + y)
+
+# Write a function code to find total count of word little in the given string:
+# "Mary had a little lamb Little lamb, little lamb Mary had a little lamb.Its fleece was white as snow And everywhere that Mary went Mary went, Mary went Everywhere that Mary went The lamb was sure to go"**
+# Python Program to Count words in a String using Dictionary
+"""
+def freq(string,passedkey):
+
+    #step1: A list variable is declared and initialized to an empty list.
+    words = []
+
+    #step2: Break the string into list of words
+    words = string.split() # or string.lower().split()
+
+    #step3: Declare a dictionary
+    Dict = {}
+
+    #step4: Use for loop to iterate words and values to the dictionary
+    for key in words:
+        if(key == passedkey):
+            Dict[key] = words.count(key)   
+    #step5: Print the dictionary
+    print("Total Count:",Dict)
+
+#step6: Call function and pass string in it
+freq("Mary had a little lamb Little lamb, little lamb Mary had a little lamb.Its fleece was white as snow And everywhere that Mary went Mary went, Mary went \
+Everywhere that Mary went The lamb was sure to go","little")
+"""
+
+def freq(string, passedkey):
+    words = []
+    words = string.split()
+
+    Dict = {}
+    for key in words:
+        if key == passedkey:
+            Dict[key] = words.count(key)
+
+    print("Total Count:", Dict)
+
+freq("Mary had a little lamb Little lamb, little lamb Mary had a little lamb.Its fleece was white as snow And everywhere that Mary went Mary went, Mary went \
+Everywhere that Mary went The lamb was sure to go","little")
