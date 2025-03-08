@@ -172,9 +172,9 @@ array_2d = np.array([[1, 2], [3, 4]]) # 2D Array
 
 # Numpy Array Attributes
 # Example:
-np.mean(array)
-np.sum(array)
-np.min(array)
-np.max(array)
-np.dot(array_1, array_2)
+np.mean(array) # type: ignore
+np.sum(array) # type: ignore
+np.min(array) # type: ignore
+np.max(array) # type: ignore
+np.dot(array_1, array_2) # type: ignore
 
