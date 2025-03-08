@@ -134,7 +134,7 @@ df.info()
 # Syntax:
 # merged_df = pd.merge(df1, df2, on=["column1", "column2"])
 # Example:
-merged_df = pd.merge(sales, products, on=["product_id", "category_id"])
+merged_df = pd.merge(sales, products, on=["product_id", "category_id"]) # type: ignore
 
 # print DataFrame
 # Syntax:
