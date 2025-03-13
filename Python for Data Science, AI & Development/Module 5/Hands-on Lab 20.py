@@ -38,37 +38,64 @@ r.text[0:100]
 
 # You can load other types of data for non-text requests, like images. Consider the URL of the following image:
 # Use single quotation marks for defining string
-url='https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/IDSNlogo.png'
+import requests
+import os
+from PIL import Image
 
-# We can make a get request:
-r=requests.get(url)
+# Define the target directory
+target_dir = r"C:\Users\js090\Desktop\IBM Data Analyst Professional Certificate\Python for Data Science, AI & Development\Module 5"
 
-# We can look at the response header:
+# Define the URL of the image to download
+url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/IDSNlogo.png'
+
+# Ensure the target directory exists or create it
+os.makedirs(target_dir, exist_ok=True)
+
+# Define the full path for saving the file in the target directory
+path = os.path.join(target_dir, 'image.png')
+
+# Make a GET request to download the image
+r = requests.get(url)
+
+# Look at the response header
+print("Response Headers:")
 print(r.headers)
 
-# We can see the 'Content-Type'
-r.headers['Content-Type']
+# Check the 'Content-Type' of the response
+print("\nContent-Type:")
+print(r.headers['Content-Type'])
 
-# An image is a response object that contains the image as a bytes-like object. As a result, we must save it using a file object. First, we specify the file path and name
-path = os.path.join(os.getcwd(), 'image.png')
-
-# We save the file, in order to access the body of the response we use the attribute content then save it using the open function and write method:
-with open(path,'wb') as f:
+# Save the image file to the specified path
+# An image is a response object that contains the image as a bytes-like object, so we save it using a file object
+with open(path, 'wb') as f:
     f.write(r.content)
 
-# We can view the image:
-Image.open(path)
+# View the image by opening it with PIL
+img = Image.open(path)
+img.show()
 
 # Question: Download a file 
 # Consider the following URL.
 import requests
 import os
 
+# Define the target directory
+target_dir = r"C:\Users\js090\Desktop\IBM Data Analyst Professional Certificate\Python for Data Science, AI & Development\Module 5"
+
+# Define the URL of the text file to download
 url = 'https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMDeveloperSkillsNetwork-PY0101EN-SkillsNetwork/labs/Module%205/data/Example1.txt'
 
-path = os.path.join(os.getcwd(), 'example.txt')
+# Ensure the target directory exists or create it
+os.makedirs(target_dir, exist_ok=True)
+
+# Define the full path for saving the file in the target directory
+path = os.path.join(target_dir, 'example.txt')
+
+# Download the file synchronously using requests
 r = requests.get(url)
-with open(path,'wb') as f:
+
+# Write the downloaded content to the specified path
+with open(path, 'wb') as f:
     f.write(r.content)
 
 # Get Request with URL Parameters

@@ -1,15 +1,12 @@
 # Practice Project
 # GDP Data extraction and processing
-
+# Import required libraries
 import pandas as pd
 import numpy as np
+import os
 
-
-def warn(*args, **kwargs):
-    pass
-import warnings
-warnings.warn = warn
-warnings.filterwarnings('ignore')
+# Define the target directory
+target_dir = r"C:\Users\js090\Desktop\IBM Data Analyst Professional Certificate\Python for Data Science, AI & Development\Module 5"
 
 # Exercise 1
 # Extract the required GDP data from the given URL using Web Scraping.
@@ -23,7 +20,7 @@ df = tables[3]
 df.columns = range(df.shape[1])
 
 # Retain columns with index 0 and 2 (name of country and value of GDP quoted by IMF)
-df = df[[0,2]]
+df = df[[0, 2]]
 
 # Retain the Rows with index 1 to 10, indicating the top 10 economies of the world.
 df = df.iloc[1:11]
@@ -37,6 +34,7 @@ df.columns = ['Country', 'GDP (Million USD)']
 # Modify the header of the DataFrame to GDP (Billion USD).
 
 # Change the data type of the 'GDP (Million USD)' column to integer. Use astype() method.
+# Remove commas from the GDP values and convert to integer
 df['GDP (Million USD)'] = df['GDP (Million USD)'].str.replace(',', '').astype(int)
 
 # Convert the GDP value in Million USD to Billion USD
@@ -49,7 +47,11 @@ df['GDP (Million USD)'] = np.round(df['GDP (Million USD)'], 2)
 df = df.rename(columns={'GDP (Million USD)': 'GDP (Billion USD)'})
 
 # Exercise 3
-# Load the DataFrame to the CSV file named "Largest_economies.csv"
-df.to_csv('./Largest_economies.csv', index=False)
+# Ensure the target directory exists or create it
+os.makedirs(target_dir, exist_ok=True)
 
+# Load the DataFrame to the CSV file named "Largest_economies.csv" in the target directory
+df.to_csv(os.path.join(target_dir, "Largest_economies.csv"), index=False)
+
+# Print the DataFrame to the console
 print(df)
