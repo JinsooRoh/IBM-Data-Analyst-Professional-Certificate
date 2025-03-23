@@ -122,7 +122,7 @@ url_2 = "https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBMD
 html_data_2 = requests.get(url_2)
 
 # Parse the html data using beautiful_soup using parser i.e html5lib or html.parser.
-beautiful_soup_2 = BeautifulSoup(html_data_2,"html.parser")
+beautiful_soup_2 = BeautifulSoup(html_data_2.text,"html.parser")
 
 # Using BeautifulSoup or the read_html function extract the table with GameStop Revenue and store it into a dataframe named gme_revenue.
 # The dataframe should have columns Date and Revenue.
